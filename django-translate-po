@@ -41,8 +41,8 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    for filename in glob.iglob(os.path.join(args.path or "", '**/django.po'), recursive=True):
-        locale_key = filename.split("/")[-2]
+    for filename in glob.iglob(os.path.join(args.path or "", '**/LC_MESSAGES/django.po'), recursive=True):
+        locale_key = filename.split("/")[-3]
 
         logging.info(f'Processing .po file for language {locale_key}: {filename}')
 
