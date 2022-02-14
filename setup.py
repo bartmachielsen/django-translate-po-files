@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='django-translate-po-files',
-    version='0.0.2',
+    version='0.0.3',
     scripts=['django-translate-po'],
     author="Bart Machielsen",
     author_email="bartmachielsen@gmail.com",
@@ -14,7 +14,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/bartmachielsen/django-translate-po-files",
     packages=setuptools.find_packages(),
-    requires=[
+    install_requires=[
         "polib",
         "requests"
     ],
