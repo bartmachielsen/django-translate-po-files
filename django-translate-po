@@ -5,11 +5,29 @@ import argparse
 import glob
 import polib
 import logging
-import google_translate
+import requests
 
 logging.basicConfig(level=logging.INFO,
                     format="%(levelname)8s  [%(asctime)s %(name)15s:%(module)s:%(lineno)4d] \t  %(message)s")
 logging.getLogger().setLevel(logging.INFO)
+
+
+def translate(text, language, source_language, api_key):
+    response = requests.post(
+        "https://translation.googleapis.com/language/translate/v2",
+        json={
+            "q": text,
+            "target": language,
+            "source": source_language
+        },
+        params={
+            "key": api_key
+        })
+    if not response.ok:
+        response.raise_for_status()
+    response = response.json()
+    translations = response.get('data', {}).get('translations')
+    return translations[0].get('translatedText') if translations else None
 
 
 if __name__ == '__main__':
