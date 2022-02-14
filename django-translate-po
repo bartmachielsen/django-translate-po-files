@@ -53,7 +53,7 @@ if __name__ == '__main__':
                 logging.info(f'Clearing: {entry.msgid}')
 
             elif not entry.translated():
-                entry.msgstr = google_translate.translate(
+                entry.msgstr = translate(
                     entry.msgid,
                     language=locale_key,
                     source_language='en',
