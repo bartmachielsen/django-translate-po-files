@@ -5,8 +5,12 @@ Automatically translate all .po files in your django project.
 
 Install the package:
 
-```pip install django-translate-po-files```
+```
+pip install django-translate-po-files
+```
 
 Translate all project PO files.
 
-```django-translate-po --google-api-key YOUR_GOOGLE_API_KEY```
+```
+django-translate-po --google-api-key YOUR_GOOGLE_API_KEY
+```
