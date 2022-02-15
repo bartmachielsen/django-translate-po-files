@@ -6,6 +6,7 @@ import glob
 import polib
 import logging
 import requests
+import html
 
 logging.basicConfig(level=logging.INFO,
                     format="%(levelname)8s  [%(asctime)s %(name)15s:%(module)s:%(lineno)4d] \t  %(message)s")
@@ -27,7 +28,7 @@ def translate(text, language, source_language, api_key):
         response.raise_for_status()
     response = response.json()
     translations = response.get('data', {}).get('translations')
-    return translations[0].get('translatedText') if translations else None
+    return html.unescape(translations[0].get('translatedText')) if translations else None
 
 
 if __name__ == '__main__':
