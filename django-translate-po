@@ -49,6 +49,11 @@ if __name__ == '__main__':
 
         po_file = polib.pofile(filename)
         for entry in po_file:
+            # Reset fuzzy flag, annoying
+            if entry.fuzzy:
+                entry.flags = []
+                entry.msgstr = ""
+
             if args.clear:
                 entry.msgstr = ""
                 logging.info(f'Clearing: {entry.msgid}')
