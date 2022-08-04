@@ -65,6 +65,8 @@ if __name__ == '__main__':
                     source_language='en',
                     api_key=args.google_api_key
                 )
+                if "-- automatically translated --" not in entry.comment:
+                    entry.comment = (entry.comment + "\n" if entry.comment else "") + "-- automatically translated --"
                 logging.info(f'Translated: "{entry.msgid}" -> {entry.msgstr}')
 
         po_file.save(filename)
